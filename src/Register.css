@@ -29,8 +29,12 @@ section {
     border-radius: 1em;
 }
 
-.errMsg {
-    color: red;
+.errmsg {
+    color: rgb(204, 54, 54);
+    background: rgb(160, 167, 173);
+    font-weight: 800;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0.4em;
 }
 
 .offscreen {
