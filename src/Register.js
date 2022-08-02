@@ -1,9 +1,14 @@
 import {useRef, useState, useEffect} from "react";
 import {faCheck, faTimes, faInfoCircle} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {Col, Divider, Row} from "antd";
+import './Register.css';
+
 import axios from "./api/axios";
 
+//user can have lower/upper/number/ - or _
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
+//pwd requires at least 1 lower, 1 uppercase, 1 num, 1 special char
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 const Register = () => {
@@ -73,12 +78,14 @@ const Register = () => {
                 <p><a href="#">Sign In</a></p>
             </section>
         ) : (
-<section>
+            <section>
             <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-            <h1>Register</h1>
+            <h1 style={{color: '#333'}}>Register</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">
-                    Username:
+                <Row style={{padding: 10}}>
+                    <Col span={6}>
+                    <label htmlFor="username">
+                    Username: 
                     <span className={validName ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
                     </span>
@@ -86,8 +93,10 @@ const Register = () => {
                         <FontAwesomeIcon icon={faTimes}/>
                     </span>
 
-                </label>
-                <input type="text" id="username" ref={userRef} autoComplete="off" onChange={(e) => setUser(e.target.value)}
+                    </label>
+                    </Col>
+                    <Col span={6}>
+                    <input type="text" id="username" ref={userRef} autoComplete="off" onChange={(e) => setUser(e.target.value)}
                     required aria-invalid={validName ? "false" : "true"} aria-describedby="uidnote" 
                     onFocus={() => setUserFocus(true)} onBlur={() => setUserFocus(false)} 
                 />
@@ -97,8 +106,13 @@ const Register = () => {
                     Must begin with a letter<br />
                     Letters, numbers, underscores, hyphens allowed
                 </p>
+                    </Col>
 
-                <label htmlFor="password">
+                </Row>
+   
+                <Row style={{padding: 10}}>
+                    <Col span={6}>
+                    <label htmlFor="password">
                     Password:
                     <span className={validPwd ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
@@ -107,7 +121,9 @@ const Register = () => {
                         <FontAwesomeIcon icon={faTimes}/>
                     </span>
                 </label>
-                <input type="password" id="password" onChange={(e) => setPwd(e.target.value)} required
+                    </Col>
+                    <Col span={6}>
+                    <input type="password" id="password" onChange={(e) => setPwd(e.target.value)} required
                     aria-invalid={validPwd ? "false" : "true"} aria-describedby="pwdnote"
                     onFocus={() => setPwdFocus(true)}
                     onBlur={() => setPwdFocus(false)}
@@ -119,7 +135,12 @@ const Register = () => {
                     Must include uppercase and lowercase letters, a number and a special character<br />
                 </p>
 
-                <label htmlFor="confirm_pwd">
+                    </Col>
+                </Row>
+              
+                <Row style={{padding: 10}}>
+                    <Col span={6}>
+                    <label htmlFor="confirm_pwd">
                     Confirm Password:
                     <span className={validMatch && matchPwd ? "valid" : "hide"}>
                         <FontAwesomeIcon icon={faCheck} />
@@ -128,7 +149,9 @@ const Register = () => {
                         <FontAwesomeIcon icon={faTimes}/>
                     </span>
                 </label>
-                <input type="password" id="confirm_pwd" onChange={(e) => setMatchPwd(e.target.value)} required
+                    </Col>
+                    <Col span={6}>
+                    <input type="password" id="confirm_pwd" onChange={(e) => setMatchPwd(e.target.value)} required
                     aria-invalid={validMatch ? "false" : "true"} aria-describedby="confirmnote"
                     onFocus={() => setMatchFocus(true)}
                     onBlur={() => setMatchFocus(false)}
@@ -138,14 +161,18 @@ const Register = () => {
                     <FontAwesomeIcon icon={faInfoCircle}/>
                     Must match the first password input field
                 </p>
-
+                    </Col>
+                </Row>
+          
+                <Row style={{padding: 10}}>
                 <button disabled={!validName || !validPwd || !validMatch ? true : false}>
                     Sign Up
                 </button>
+                </Row>
 
             </form>
 
-            <p>
+            <p style={{color: '#333'}}>
                 Already registered?<br />
                 <span className="line">
                     {/*put router link here */}

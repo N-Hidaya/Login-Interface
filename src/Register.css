@@ -1,0 +1,102 @@
+
+body {
+    background: #333;
+    font-family: 'PT Sans', sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+* {
+    box-sizing: border-box;
+}
+
+form {
+    border-radius: 0.5em;
+    background: #fff;
+    margin: 0 auto;
+    padding: 20px;
+    padding-right: 2em;
+    padding-left: 2em;
+
+}
+
+section {
+    background: pink;
+    padding: 30px;
+    margin-left: 10em;
+    margin-right: 10em;
+    border-radius: 1em;
+}
+
+.errMsg {
+    color: red;
+}
+
+.offscreen {
+    display: none;
+}
+
+.instructions {
+    color: red;
+}
+
+.valid {
+    padding: 5px;
+    color: green;
+}
+
+.invalid {
+    padding: 5px;
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+   
+input[type=text]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+input[type=password]:focus, textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+button {
+    display: inline-block;
+    border-radius: 0.2em;
+    padding: 10px 15px;
+    margin: 0;
+    text-decoration: none;
+    background: #0069ed;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
